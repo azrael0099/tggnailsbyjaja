@@ -12,10 +12,10 @@
         body {
             font-family: 'Wasted Vindey', cursive;
             background-color: #fff;
-            color: #333;
+            color: #000000;
             margin: 0;
             padding: 0;
-            overflow: scroll;
+            overflow: auto;
         }
         header {
             position: relative;
@@ -67,7 +67,7 @@
             z-index: 1; /* Makes sure the logo is on top of the video */
         }
         .video-background {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -83,7 +83,7 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 40px; /* Space below the logo */
+            margin-top: 20px; /* Space below the logo */
         }
 
         .nav-buttons a {
@@ -93,6 +93,7 @@
             padding: 15px 30px;
             border-radius: 5px;
             font-weight: bold;
+            z-index: 2;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
@@ -108,7 +109,6 @@
     <header>
         <video class="video-background" autoplay muted loop>
             <source src="videos/tggnailsbyjajareels.mp4" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
         
         <h1>Welcome to Twink Glamour Gaze Nails!</h1>
