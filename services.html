@@ -9,13 +9,29 @@
             font-family: 'Wasted Vindey';
             src: url('WastedVindey.ttf') format('truetype');
         }
+
+        /* Set body styles */
         body {
             font-family: 'Wasted Vindey', cursive;
             background-color: #fff;
             color: #333;
             margin: 0;
             padding: 0;
+            position: relative;
         }
+
+        /* Background video */
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh; /* Full screen height */
+            object-fit: cover; /* Ensures the video covers the whole area */
+            z-index: -1; /* Keep video behind content */
+        }
+
+        /* Header styles */
         header {
             background-color: #f8c8dc;
             text-align: center;
@@ -23,38 +39,94 @@
             color: #fff;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+
         header h1 {
             font-size: 2.5em;
             margin: 0;
         }
+
+        /* Navigation Styles */
         nav ul {
             list-style: none;
             padding: 0;
             margin: 20px 0 0;
         }
+
         nav ul li {
             display: inline;
             margin: 0 15px;
         }
+
         nav ul li a {
             text-decoration: none;
             color: #333;
             font-weight: bold;
             transition: color 0.3s ease;
         }
+
         nav ul li a:hover {
             color: #f06292;
         }
+
+        /* Section styling */
         section {
             padding: 50px;
             text-align: center;
         }
+
         h2 {
             color: #f06292;
+        }
+
+        /* Slideshow Styles */
+        .slideshow-container {
+            position: relative;
+            width: 80vw;
+            height: 100vh;
+            margin: 0 auto;
+            overflow: hidden; 
+        }
+
+        .slideshow-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+        }
+
+        .slide-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .slide-controls button {
+            background-color: transparent;
+            color: rgb(128, 128, 128);
+            font-size: 2em;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .slide-controls button:hover {
+            background-color: #ffbfd4;
         }
     </style>
 </head>
 <body>
+
+    <!-- Background Video -->
+    <video autoplay muted loop id="background-video">
+        <source src="videos/tggnailsbyjajareels.mp4" type="video/webm">
+    </video>
+
+    <!-- Page Content -->
     <header>
         <h1>Twink Glamour Gaze Nails</h1>
         <nav>
@@ -77,7 +149,39 @@
             <li><strong>Gel Polish Only:</strong> Long-lasting color on natural nails.</li>
             <li><strong>Removal:</strong> Safe and professional removal of gel polish or extensions.</li>
         </ul>
+
+        <!-- Slideshow -->
+        <div class="slideshow-container">
+            <img id="service-slide" src="slides/1.png" alt="Service Slide" />
+            <div class="slide-controls">
+                <button onclick="prevSlide()">&#10094; </button>
+                <button onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
     </section>
 
+    <script>
+        const slides = [
+            "slides/1.png",
+            "slides/2.png",
+            "slides/3.png",
+            "slides/4.png"
+        ];
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const img = document.getElementById("service-slide");
+            currentSlide = (index + slides.length) % slides.length; // loop around
+            img.src = slides[currentSlide];
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+    </script>
 </body>
 </html>
